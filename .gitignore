@@ -1,0 +1,11 @@
+node_modules/
+archive-2023*
+index.old.js
+server-access.log
+server-error.log
+server-errror-SENDHW.log
+"langs copy/"
+config.json
+.config/
+.npm/
+.vscode/

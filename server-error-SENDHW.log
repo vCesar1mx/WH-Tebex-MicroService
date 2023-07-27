@@ -1,0 +1,26 @@
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+TypeError: Cannot read properties of undefined (reading 'name')
+TypeError: Cannot read properties of undefined (reading 'name')
+TypeError: Cannot read properties of undefined (reading 'name')
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values may not be empty.
+TypeError: client.channels.cache.get(...).send(...).react is not a function
+TypeError: MSG.setUrl is not a function
+TypeError: channel.send is not a function
+TypeError: Cannot read properties of undefined (reading 'send')
+ReferenceError: Discord is not defined
+TypeError: Cannot read properties of undefined (reading 'MessageEmbed')
+RangeError [EMBED_FIELD_VALUE]: MessageEmbed field values must be non-empty strings.
