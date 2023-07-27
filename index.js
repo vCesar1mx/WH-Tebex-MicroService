@@ -23,7 +23,7 @@ function updateApp() {
   console.log('Actualizando la aplicación...');
 
   // Ejecuta el comando "git pull" para obtener los últimos cambios del repositorio
-  exec('git pull', (error, stdout, stderr) => {
+  exec('git pull main master', (error, stdout, stderr) => {
     if (error) {
       console.error('Error al obtener las últimas actualizaciones del repositorio:', error);
     } else {
@@ -38,7 +38,7 @@ const updateInterval = 60 * 60 * 1000; // 1 hora en milisegundos
 //setInterval(checkForUpdates, updateInterval);
 checkForUpdates();
 ////// UPDATES ///////
-/*
+
 const fs = require('fs');
 var colors = require('colors');
 const { debug, defPort, embed, token, shopchannelID, language } = require("./config.json");
@@ -130,4 +130,3 @@ client.on('ready', () => {
   console.log(`${colors.yellow('5. Running on ')} ${colors.green('server port ' + port)}`);
 });
 if (status == 0) { client.login(token); } else { console.log(colors.red('ENGINE: The discord bot and web server will not start because the integration language is being processed.')); }
-*/
