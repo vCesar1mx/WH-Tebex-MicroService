@@ -8,7 +8,7 @@ A continuación, te presento la documentación del código proporcionado:
 ## Descripción
 Este código es una aplicación de Node.js que funciona como un bot de Discord y un servidor web. El bot de Discord recibe información de productos y sus precios a través de una solicitud POST y publica esos productos en un canal específico de Discord. El servidor web se encarga de recibir la solicitud POST y procesar la información para enviarla al bot de Discord.
 
-## Configuración
+## Configuración (APP)
 Antes de ejecutar la aplicación, es necesario configurar algunas variables en el archivo `config.json`. A continuación, se describen las principales variables de configuración:
 
 - `debug`: Un valor booleano que indica si el modo de depuración está habilitado o no.
@@ -17,6 +17,11 @@ Antes de ejecutar la aplicación, es necesario configurar algunas variables en e
 - `token`: El token de acceso del bot de Discord.
 - `shopchannelID`: El ID del canal de Discord donde se publicarán los productos.
 - `language`: El idioma de la aplicación.
+ 
+### Configuracion (Tebex)
+1. Debera crear un dns apuntando a su servidor donde aloja este servicio.
+2. Añada el dns con el puerto establecido anteriormente como punto de acceso webhook en la seccion developers en tebex.
+3. Verifique que se haya validado el webhook como correcto.
 
 ## Inicio de la Aplicación
 La aplicación se inicia mediante la creación de una instancia del cliente de Discord y la configuración del servidor web. 
