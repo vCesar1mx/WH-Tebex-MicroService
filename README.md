@@ -18,9 +18,10 @@ Antes de ejecutar la aplicación, es necesario configurar algunas variables en e
 - `shopchannelID`: El ID del canal de Discord donde se publicarán los productos.
 - `language`: El idioma de la aplicación.
  
-### Configuracion (Tebex)
+## Configuracion (Tebex)
 1. Debera crear un dns apuntando a su servidor donde aloja este servicio.
 2. Añada el dns con el puerto establecido anteriormente como punto de acceso webhook en la seccion developers en tebex.
+Ejemplo: us1.haliacraft.com:12345
 3. Verifique que se haya validado el webhook como correcto.
 
 ## Inicio de la Aplicación
