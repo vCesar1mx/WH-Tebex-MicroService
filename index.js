@@ -1,3 +1,43 @@
+const { exec } = require('child_process');
+
+function checkForUpdates() {
+  console.log('Verificando actualizaciones del repositorio...');
+
+  // Ejecuta el comando "git diff" para obtener los cambios pendientes en el repositorio
+  exec('git diff', (error, stdout, stderr) => {
+    if (error) {
+      console.error('Error al verificar actualizaciones del repositorio:', error);
+    } else {
+      if (stdout) {
+        // Si stdout contiene cambios, hay actualizaciones pendientes
+        console.log('Hay actualizaciones pendientes. Actualizando la aplicación...');
+        updateApp();
+      } else {
+        console.log('No hay actualizaciones pendientes. La aplicación está actualizada.');
+      }
+    }
+  });
+}
+
+function updateApp() {
+  console.log('Actualizando la aplicación...');
+
+  // Ejecuta el comando "git pull" para obtener los últimos cambios del repositorio
+  exec('git pull', (error, stdout, stderr) => {
+    if (error) {
+      console.error('Error al obtener las últimas actualizaciones del repositorio:', error);
+    } else {
+      console.log('Actualización exitosa. Reiniciando la aplicación...');
+      process.exit(0); // Reinicia la aplicación después de la actualización
+    }
+  });
+}
+
+// Verifica actualizaciones cada cierto tiempo (por ejemplo, cada 1 hora)
+const updateInterval = 60 * 60 * 1000; // 1 hora en milisegundos
+setInterval(checkForUpdates, updateInterval);
+
+////// UPDATES ///////
 const fs = require('fs');
 var colors = require('colors');
 const { debug, defPort, embed, token, shopchannelID, language } = require("./config.json");
