@@ -27,7 +27,7 @@ Antes de ejecutar la aplicación, es necesario configurar algunas variables en e
 2. Añada el dns con el puerto establecido anteriormente como punto de acceso webhook en la seccion developers en tebex.
 
 - Ejemplo: us1.haliacraft.com:12345
-- Puedes ver el ejemplo de la seccion aqui: https://prnt.sc/aT8YeXmqx9J7
+- Puedes ver el ejemplo de la seccion aqui: https://prnt.sc/aT8YeXmqx9J7 - https://prnt.sc/eyVXUlLRJtL9 - https://prnt.sc/zDIEw7lYeJ3H
 
 3. Verifique que se haya validado el webhook como correcto.
 
