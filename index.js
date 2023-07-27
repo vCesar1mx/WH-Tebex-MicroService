@@ -35,8 +35,8 @@ function updateApp() {
 
 // Verifica actualizaciones cada cierto tiempo (por ejemplo, cada 1 hora)
 const updateInterval = 60 * 60 * 1000; // 1 hora en milisegundos
-setInterval(checkForUpdates, updateInterval);
-
+//setInterval(checkForUpdates, updateInterval);
+checkForUpdates();
 ////// UPDATES ///////
 /*
 const fs = require('fs');
