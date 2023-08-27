@@ -46,10 +46,6 @@ La aplicación cuenta con las siguientes funciones principales:
 
 Esta función se utiliza para verificar si hay actualizaciones pendientes en el repositorio Git antes de ejecutar la aplicación. Utiliza el comando `git diff` para comparar el estado actual del repositorio con el último commit. Si hay cambios pendientes, se llama a la función `updateApp()` para obtener los últimos cambios y reiniciar la aplicación.
 
-### `updateApp()`
-
-Esta función se utiliza para obtener las últimas actualizaciones del repositorio Git utilizando el comando `git pull`. Si la obtención de las actualizaciones es exitosa, la aplicación se reinicia para aplicar los cambios.
-
 ### `sendWH()`
 
 Esta función se encarga de enviar un mensaje embebido (embed) al canal de Discord especificado con la información de los productos recibidos a través de la solicitud POST. Los detalles del producto, el precio total y otros datos se incluyen en el mensaje embebido.
