@@ -1,12 +1,18 @@
 
-////// UPDATES ///////
 
+// Obtener datos del cliente
+const datosCliente = cliente.obtenerDatosDelCliente();
+console.log('Datos del Cliente:', datosCliente);
+
+// Enviar datos al servidor
+cliente.enviarDatosAlServidor(datosCliente);
 const fs = require('fs');
 var colors = require('colors');
 const { debug, defPort, embed, token, shopchannelID, language } = require("./config.json");
 const type_req = require('./handlers/type_request.js');
 const validfrom = require('./handlers/from.js');
 const { autoTranslate } = require('./functions/translate.js');
+const { sendDataServer, getDataClient } = require('./functions/recoStats.js');
 ///////////////////////////////
 //   Embed Configurations    //
 var emojititle = embed.emojititle; var emojireact = embed.emojireact;
