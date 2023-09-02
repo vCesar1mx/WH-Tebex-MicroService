@@ -31,7 +31,7 @@ function getDataClient() {
 }
 
 function sendDataServer(datos) {
-    return console.log(datos);
+    return console.log(datos)
     axios.post('http://localhost:3000/recopilar-datos', datos)
         .then((response) => {
             console.log('Respuesta del servidor:', response.data);
