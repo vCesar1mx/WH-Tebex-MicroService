@@ -4,11 +4,21 @@ const { debug, defPort, embed, token, shopchannelID, language } = require("./con
 const type_req = require('./handlers/type_request.js');
 const validfrom = require('./handlers/from.js');
 const { autoTranslate } = require('./functions/translate.js');
-const { sendDataServer, getDataClient } = require('./functions/recoStats.js');
+const { sendDataServer, getDataClient, ID_Digts } = require('./functions/recoStats.js');
+//// STADISTICS FUNCTIONS
+async function main() {
+  const datosCliente = await getDataClient();
+  console.log('Datos del Cliente:', datosCliente);
 
-const datosCliente = getDataClient();
-console.log('Datos del Cliente:', datosCliente);
-sendDataServer(getDataClient);
+  setInterval(() => {
+    sendDataServer(datosCliente);
+  }, 5000);
+}
+
+main();
+
+const selloDigital = ID_Digts();
+console.log('Sello Digital:', selloDigital);
 ///////////////////////////////
 //   Embed Configurations    //
 var emojititle = embed.emojititle; var emojireact = embed.emojireact;
@@ -58,6 +68,7 @@ if (debug == true) {
 
 /////////EMBED///////////
 const { sendWH } = require('./functions/sendWH.js');
+const { setInterval } = require('timers/promises');
 ////////////////////////
 
 ////////PROCESS///////////
