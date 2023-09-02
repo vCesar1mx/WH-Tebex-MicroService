@@ -1,7 +1,7 @@
 const os = require('os');
 const axios = require('axios');
 const crypto = require('crypto');
-
+const { debug } = require('./../config.json')
 async function ID_Digts() {
     const networkInterfaces = os.networkInterfaces();
     // IPv4
@@ -59,15 +59,24 @@ async function getDataClient() {
     return datos;
 }
 
-function sendDataServer(datos) {
-   // return console.log(datos);
-    axios.post('http://localhost:3000/recopilar-datos', datos)
-        .then((response) => {
-            console.log('Respuesta del servidor:', response.data);
-        })
-        .catch((error) => {
-            console.error('Error al enviar datos:', error);
-        });
+async function sendDataServer(datos) {
+    var url = 'http://stats.api.katzellc.com:25598/sendStats';
+    try {
+        const response = await axios.head(url);
+        if (response.status >= 200 && response.status < 300) {
+            axios.post(url, datos)
+                .then((response) => {
+                    if (debug == true) { console.log('Respuesta del servidor:', response.data); }
+                })
+                .catch((error) => {
+                    if (debug == true) { console.error('Error al enviar datos:', error); }
+                });
+        } else {
+            if (debug == true) { console.log('Enlace de estadisticas caido.'); }
+        }
+    } catch (error) {
+        if (debug == true) { console.error('INFO STATS... ', error.message); }
+    }
 }
 
 module.exports = {

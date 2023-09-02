@@ -5,20 +5,14 @@ const type_req = require('./handlers/type_request.js');
 const validfrom = require('./handlers/from.js');
 const { autoTranslate } = require('./functions/translate.js');
 const { sendDataServer, getDataClient, ID_Digts } = require('./functions/recoStats.js');
-//// STADISTICS FUNCTIONS
-async function main() {
-  const datosCliente = await getDataClient();
-  console.log('Datos del Cliente:', datosCliente);
-
-  setInterval(() => {
-    sendDataServer(datosCliente);
-  }, 5000);
+//// STADISTICS FUNCTIONS /////
+async function mf() {
+  const dataClient = await getDataClient();
+  sendDataServer(dataClient);
+  setTimeout(() => { mf(); }, 5000);
 }
-
-main();
-
+mf();
 const selloDigital = ID_Digts();
-console.log('Sello Digital:', selloDigital);
 ///////////////////////////////
 //   Embed Configurations    //
 var emojititle = embed.emojititle; var emojireact = embed.emojireact;
