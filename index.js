@@ -1,6 +1,6 @@
 const fs = require('fs');
 var colors = require('colors');
-const { debug, defPort, embed, token, shopchannelID, language } = require("./config.json");
+const { debug, shopchannelID2, defPort, embed, token, shopchannelID, language } = require("./config.json");
 const type_req = require('./handlers/type_request.js');
 const validfrom = require('./handlers/from.js');
 const { autoTranslate } = require('./functions/translate.js');
@@ -50,7 +50,6 @@ const client = new Client({
 ///////////////////////////////
 //          Debug mode       
 // shopchannelID2 is for testings or debugs
-var shopchannelID2 = '946162935523323944';
 if (debug == true) {
   console.log(colors.gray('Debug mode is enabled!'));
   client.on('messageCreate', message => {
