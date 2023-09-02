@@ -49,7 +49,7 @@ async function getDataClient() {
     const startTime = new Date(Date.now() - os.uptime() * 1000);
     var selloDS = await ID_Digts();
     const datos = {
-        uptime: `${horas} horas, ${minutos} minutos y ${segundos} segundos`,
+        uptime: `${horas}h, ${minutos}m y ${segundos}s`,
         ip: ipAddress,
         startTime: startTime.toString(),
         ping: 'activo',
