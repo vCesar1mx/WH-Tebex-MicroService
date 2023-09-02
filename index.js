@@ -1,10 +1,3 @@
-
-
-// Obtener datos del cliente
-const datosCliente = cliente.obtenerDatosDelCliente();
-console.log('Datos del Cliente:', datosCliente);
-
-
 const fs = require('fs');
 var colors = require('colors');
 const { debug, defPort, embed, token, shopchannelID, language } = require("./config.json");
@@ -13,6 +6,8 @@ const validfrom = require('./handlers/from.js');
 const { autoTranslate } = require('./functions/translate.js');
 const { sendDataServer, getDataClient } = require('./functions/recoStats.js');
 
+const datosCliente = getDataClient();
+console.log('Datos del Cliente:', datosCliente);
 sendDataServer(getDataClient);
 ///////////////////////////////
 //   Embed Configurations    //
