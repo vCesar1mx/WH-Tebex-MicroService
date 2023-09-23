@@ -48,7 +48,7 @@ if (fs.existsSync('./langs/' + language + '.json')) {
 ///////////////////////////////
 // Defined Discord Functions //
 ///////////////////////////////
-const {
+/*const {
   Client,
   Events,
   GatewayIntentBits,
@@ -61,7 +61,7 @@ const client = new Client({
     GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildMembers,
   ],
-});
+});*/
 ///////////////////////////////
 //          Debug mode       
 // shopchannelID2 is for testings or debugs
@@ -80,7 +80,7 @@ const { setInterval } = require('timers/promises');
 ////////////////////////
 
 ////////PROCESS///////////
-client.on('ready', () => {
+//client.on('ready', () => {
   console.log(colors.yellow('2. Started... '));
   console.log(colors.green(`3. Logged in as ${client.user.tag}!`));
   console.log(colors.yellow('4. Running on ') + colors.green('discord.js v' + require('./package.json').dependencies['discord.js'].replace('^', '')));
@@ -113,5 +113,5 @@ client.on('ready', () => {
   app.listen(port);
   console.log(`${colors.yellow('5. Running on ')} ${colors.green('server port ' + port)}`);
   logger.info('App its works.');
-});
+//});
 if (status == 0) { /*client.login(token);*/ } else { console.log(colors.red('ENGINE: The discord bot and web server will not start because the integration language is being processed.')); }
