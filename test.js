@@ -67,10 +67,10 @@ const client = new Client({
 // shopchannelID2 is for testings or debugs
 if (debug == true) {
   console.log(colors.gray('Debug mode is enabled!'));
-  client.on('messageCreate', message => {
+  /*client.on('messageCreate', message => {
     if (message.author.bot) return;
     console.log(`${message.author.username}: ${message.content}`)
-  });
+  });*/
 }
 ///////////////////////////////
 
@@ -82,7 +82,7 @@ const { setInterval } = require('timers/promises');
 ////////PROCESS///////////
 //client.on('ready', () => {
   console.log(colors.yellow('2. Started... '));
-  console.log(colors.green(`3. Logged in as ${client.user.tag}!`));
+ // console.log(colors.green(`3. Logged in as ${client.user.tag}!`));
   console.log(colors.yellow('4. Running on ') + colors.green('discord.js v' + require('./package.json').dependencies['discord.js'].replace('^', '')));
   const app = express();
   const port = process.env.PORT || defPort;
