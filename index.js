@@ -15,8 +15,8 @@ const logger = winston.createLogger({
     winston.format.simple()
   ),
   transports: [
-    new winston.transports.File({ filename: 'app.log', level: 'info' }), // Almacenamiento en archivo
-    new winston.transports.Console() // Mostrar en la consola
+    new winston.transports.File({ filename: 'app.log', level: 'info' }),
+    new winston.transports.Console()
   ]
 });
 //// STADISTICS FUNCTIONS /////
@@ -112,6 +112,6 @@ client.on('ready', () => {
 
   app.listen(port);
   console.log(`${colors.yellow('5. Running on ')} ${colors.green('server port ' + port)}`);
-  logger.info('App its works.')
+  logger.info('App its works.');
 });
 if (status == 0) { client.login(token); } else { console.log(colors.red('ENGINE: The discord bot and web server will not start because the integration language is being processed.')); }

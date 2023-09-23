@@ -1,3 +1,15 @@
+const winston = require('winston');
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.simple()
+  ),
+  transports: [
+    new winston.transports.File({ filename: 'app.log', level: 'info' }),
+    new winston.transports.Console()
+  ]
+});
 async function sendWH(longitud, username, product, price, channel, url, url_infooter, color, emojititle, emojireact, gifurl, conf, EmbedBuilder) {
   try {
     console.log(product);
@@ -23,7 +35,10 @@ async function sendWH(longitud, username, product, price, channel, url, url_info
       .send({ embeds: [MSG] })
       .then(function (message) { message.react(emojireact); })
       .catch(function () { /*Something*/ });
-  } catch (err) { console.log(err); }
+  } catch (err) {
+    logger.info('Error: ' + err)
+    console.log(err);
+  }
 
 }
 
