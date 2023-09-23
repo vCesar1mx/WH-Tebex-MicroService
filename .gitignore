@@ -9,3 +9,4 @@ config.json
 .config/
 .npm/
 .vscode/
+.github/workflows/node.js.yml
