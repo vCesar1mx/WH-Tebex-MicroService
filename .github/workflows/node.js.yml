@@ -28,4 +28,4 @@ jobs:
         cache: 'npm'
     - run: npm i
     - run: cp config.example.json config.json
-    - run: node index.js
+    - run: node test.js
