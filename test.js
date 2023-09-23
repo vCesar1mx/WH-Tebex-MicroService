@@ -76,7 +76,7 @@ if (debug == true) {
 
 /////////EMBED///////////
 const { sendWH } = require('./functions/sendWH.js');
-const { setInterval } = require('timers/promises');
+//const { setInterval } = require('timers/promises');
 ////////////////////////
 
 ////////PROCESS///////////
