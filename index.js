@@ -1,18 +1,33 @@
 const fs = require('fs');
 var colors = require('colors');
-const { debug, shopchannelID2, defPort, embed, token, shopchannelID, language } = require("./config.json");
+const winston = require('winston');
+const { debug, shopchannelID2, defPort, embed, token, shopchannelID, language, useMCskin } = require("./config.json");
 const type_req = require('./handlers/type_request.js');
 const validfrom = require('./handlers/from.js');
 const { autoTranslate } = require('./functions/translate.js');
+const { createFeatures } = require('./functions/create_features.js');
 const { sendDataServer, getDataClient, ID_Digts } = require('./functions/recoStats.js');
+//// LOGS SYSTEM ////
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.simple()
+  ),
+  transports: [
+    new winston.transports.File({ filename: 'app.log', level: 'info' }), // Almacenamiento en archivo
+    new winston.transports.Console() // Mostrar en la consola
+  ]
+});
 //// STADISTICS FUNCTIONS /////
 async function mf() {
   const dataClient = await getDataClient();
   sendDataServer(dataClient);
-  setTimeout(() => { mf(); }, 5000);
+  setTimeout(() => { mf(); }, 300000);
 }
 mf();
 const selloDigital = ID_Digts();
+if (embed.useMCskin === undefined) createFeatures();
 ///////////////////////////////
 //   Embed Configurations    //
 var emojititle = embed.emojititle; var emojireact = embed.emojireact;
@@ -78,23 +93,25 @@ client.on('ready', () => {
     try {
       // Process the request
       const products = req.body.subject.products;
-      const temp = products.map((product) => `${emojiproductArrow}${product.name} **|** $${product.paid_price.amount.toFixed(2)}`).join('\n');
+      const temp = products.map((product) => `${emojiproductArrow}${product.name} **x${product.quantity}** **|** $${product.paid_price.amount.toFixed(2)}`).join('\n');
       const totalPrice = `${req.body.subject.price.amount.toFixed(2)} **${req.body.subject.price.currency}** ${emojicurrency}`;
       const channel = client.channels.cache.get(shopchannelID);
       if (debug == true) console.log(`${conf.messages.getchannel} ${channel}`);
       // Send message with function
       var name = req.body.subject.customer.username.username;
       var prodl = products.length;
+      if (!useMCskin) gifurl = 'https://mc-heads.net/avatar/' + name;
       await sendWH(prodl, name, temp, totalPrice, channel, url, url_infooter, color, emojititle, emojireact, gifurl, conf, EmbedBuilder);
       // Send response to the request
       res.status(200).json(req.body);
     } catch (err) {
       console.log(colors.red(`ERROR: ${err}`));
-      await fs.promises.appendFile('server-error.log', `${err}\r\n`);
+      await logger.info('server-error.log', `${err}\r\n`);
     }
   });
 
   app.listen(port);
   console.log(`${colors.yellow('5. Running on ')} ${colors.green('server port ' + port)}`);
+  logger.info('App its works.')
 });
 if (status == 0) { client.login(token); } else { console.log(colors.red('ENGINE: The discord bot and web server will not start because the integration language is being processed.')); }
