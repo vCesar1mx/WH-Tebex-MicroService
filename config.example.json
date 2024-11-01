@@ -1,0 +1,23 @@
+{
+  "debug": true,
+  "shopchannelID2": "Its for debug",
+  "defPort": "Change with your port",
+  "token": "Change with your token",
+  "shopchannelID": "946162822239379478",
+  "language": "es",
+  "embed": {
+    "url": "https://shop.haliacraft.com",
+    "url_infooter": true,
+    "gifurl": "https://i.ibb.co/wrw5DdL/shoppingkart.gif",
+    "emojititle": "<:Tienda:989637753237032992>",
+    "emojireact": "<:CHECK:859580885573042176>",
+    "emojicurrency": "<:si1:985516183811940432>",
+    "color": "#0099ff",
+    "emojiproductArrow": "<a:clip:863318325207236618>",
+    "useMCskin": true
+  },
+  "api": {
+    "comment": "Is only decorative, you can leave it empty",
+    "favicon_url": "https://dunb17ur4ymx4.cloudfront.net/webstore/favicons/eaa71c0baff2ccd3d45c9c0263619b9dcfefe31d.png"
+  }
+}
