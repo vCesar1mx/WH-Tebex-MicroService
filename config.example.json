@@ -1,19 +1,19 @@
 {
-  "debug": true,
-  "shopchannelID2": "Its for debug",
-  "defPort": "Change with your port",
-  "token": "Change with your token",
-  "shopchannelID": "946162822239379478",
+  "debug": false,
+  "defPort": "25500 (Port)",
+  "token": "DISCORD TOKEN SECRET",
+  "shopchannelID": "(CHANNEL FOR ANNOUNCES))",
   "language": "es",
   "embed": {
-    "url": "https://shop.haliacraft.com",
+    "url": "https://tienda.haliacraft.com",
     "url_infooter": true,
-    "gifurl": "https://i.ibb.co/wrw5DdL/shoppingkart.gif",
+    "gifurl": "https://cdn.discordapp.com/attachments/784911697672536084/1161109534283141130/TIENDAAAAAAAAAAAAAAAAAA.png?ex=65371a85&is=6524a585&hm=380ab4f8471c7d20c571d63b952f878bdac8566b614071cda8ff0139b94a44fa&",
+    "imageurl": "https://i.ibb.co/y8W49Xv/NUEVA-DONACION.png",
     "emojititle": "<:Tienda:989637753237032992>",
     "emojireact": "<:CHECK:859580885573042176>",
     "emojicurrency": "<:si1:985516183811940432>",
     "color": "#0099ff",
-    "emojiproductArrow": "<a:clip:863318325207236618>",
+    "emojiproductArrow": "<:linea:1176722645836902420> ",
     "useMCskin": true
   },
   "api": {
