@@ -5,9 +5,10 @@
   "fields": {
     "name": "Usuario:",
     "valuetotal": "Valor Total:",
-    "getbygiftcard": "¡Adquirido con una GiftCard!",
+    "getbygiftcard": "Este producto fue adquirido con una GiftCard!",
     "packages": "Paquetes adquiridos:",
-    "package": "Paquete adquirido:"
+    "package": "Paquete adquirido:",
+    "servidor": "Servidor"
   },
   "footer": {
     "text": "Adquiere rangos y mucho más en"

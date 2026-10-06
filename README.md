@@ -1,63 +1,132 @@
-# WH-Tebex-MicroService
+# WH-Tebex-MicroService [![Node.js CI](https://github.com/vC3sar/WH-Tebex-MicroService-2025/actions/workflows/node.js.yml/badge.svg)](https://github.com/vC3sar/WH-Tebex-MicroService-2025/actions/workflows/node.js.yml)
 
-Este repositorio contiene una aplicación de Node.js que implementa un webhook para enviar notificaciones de compra a un canal específico en Discord. El webhook está diseñado para recibir solicitudes POST con información sobre productos y precios de compras realizadas.
+Microservicio Node.js robusto, seguro y fácil de usar para recibir webhooks de **Tebex**, validar su origen, evitar notificaciones duplicadas y publicar las compras de forma instantánea en **Discord** con embeds altamente personalizables y profesionales.
 
-A continuación, te presento la documentación del código proporcionado:
+---
 
-# Documentación del Código
+## ✨ Características Principales
 
-## Descripción
+- **Fácil de Configurar**: Asistente interactivo en consola para Linux y Windows (Click to Run).
+- **Integración con Discord**: Notificaciones automáticas de compras con soporte para skins de Minecraft.
+- **Comandos Integrados**: Consulta de perfiles de Tebex y detalles de pagos directamente desde Discord (`!tbxuser`, `!tbxcheck`).
+- **Seguridad y Validación**: Filtro estricto por IPs oficiales de Tebex para evitar falsificaciones.
+- **Idempotencia**: Sistema anti-spam que evita notificaciones repetidas si Tebex reenvía un evento.
+- **Monitorización**: Endpoints de `/healthz` y `/metrics` integrados.
 
-Este código es una aplicación de Node.js que funciona como un bot de Discord y un servidor web. El bot de Discord recibe información de productos y sus precios a través de una solicitud POST y publica esos productos en un canal específico de Discord. El servidor web se encarga de recibir la solicitud POST y procesar la información para enviarla al bot de Discord.
+---
 
-## Configuración (APP)
+## 🚀 Instalación y Uso (Click to Run)
 
-Antes de ejecutar la aplicación, es necesario configurar algunas variables en el archivo `config.json`. A continuación, se describen las principales variables de configuración:
+Hemos simplificado la instalación para que no tengas que editar archivos de configuración manualmente.
 
-- `debug`: Un valor booleano que indica si el modo de depuración está habilitado o no.
-- `defPort`: El número de puerto en el que se ejecutará el servidor web.
-- `embed`: Un objeto con varias configuraciones para los mensajes embebidos (embeds) que se enviarán al canal de Discord.
-- `token`: El token de acceso del bot de Discord.
-- `shopchannelID`: El ID del canal de Discord donde se publicarán los productos.
-- `language`: El idioma de la aplicación.
+### Requisitos previos
+- Node.js 18 o superior.
+- Un Bot de Discord y su token.
+- Un servidor de Linux o Windows.
 
-## Configuracion (Tebex)
+### 🐧 En Linux / Consolas (Bash)
 
-1. Debera crear un dns apuntando a su servidor donde aloja este servicio.
-2. Añada el dns con el puerto establecido anteriormente como punto de acceso webhook en la seccion developers en tebex.
+1. Dale permisos de ejecución a los scripts:
+   ```bash
+   chmod +x setup.sh start.sh
+   ```
+2. Ejecuta el **Asistente de Configuración** interactivo:
+   ```bash
+   ./setup.sh
+   ```
+   *El asistente te guiará para introducir tu Token, ID del Canal, Puerto, Clave de Tebex, etc.*
+3. Inicia el servidor:
+   ```bash
+   ./start.sh
+   ```
 
-- Ejemplo: us1.haliacraft.com:12345
-- Puedes ver el ejemplo de la seccion aqui: https://prnt.sc/aT8YeXmqx9J7 - https://prnt.sc/eyVXUlLRJtL9 - https://prnt.sc/zDIEw7lYeJ3H
+### 🪟 En Windows
 
-3. Verifique que se haya validado el webhook como correcto.
+1. Haz doble clic en el archivo **`setup.bat`**. 
+   *Se instalarán las dependencias necesarias y se abrirá el Asistente de Configuración.*
+2. Responde a las preguntas del asistente en la consola.
+3. Haz doble clic en el archivo **`start.bat`** para iniciar el microservicio.
 
-## Inicio de la Aplicación
+*(Nota: Si lo prefieres, siempre puedes configurar usando el método tradicional de Node: `npm install`, luego `npm run setup` y finalmente `npm start`)*.
 
-La aplicación se inicia mediante la creación de una instancia del cliente de Discord y la configuración del servidor web.
+---
 
-- El cliente de Discord se inicializa con las intenciones adecuadas para recibir mensajes y eventos de miembros y mensajes de los servidores.
-- El servidor web se crea utilizando Express y escucha en el puerto especificado en la variable `defPort`.
+## 🎮 Comandos de Discord (Tebex Check)
 
-## Funciones Principales
+| Comando | Uso | Descripción |
+|---|---|---|
+| `!tbxuser <nick\|uuid>` | `!tbxuser Notch` | Consulta un usuario Tebex. Muestra su perfil y un selector paginado con sus compras. |
+| `!tbxcheck <tbx-id>` | `!tbxcheck 1234567890` | Consulta los detalles completos y exactos de un pago específico. |
 
-La aplicación cuenta con las siguientes funciones principales:
+---
 
-### `sendWH()`
+## ⚙️ Configuración (`config.json`)
 
-Esta función se encarga de enviar un mensaje embebido (embed) al canal de Discord especificado con la información de los productos recibidos a través de la solicitud POST. Los detalles del producto, el precio total y otros datos se incluyen en el mensaje embebido.
+Si decides editar la configuración manualmente, estos son los valores disponibles:
 
-## Eventos y Funcionalidades de Depuración
+### Principal y Tebex Check
+| Clave | Propósito |
+|---|---|
+| `showServer` | `true/false` Muestra u oculta servidores asociados a cada producto. |
+| `debug` | `true/false` Activa logs detallados y desactiva la deduplicación (para pruebas). |
+| `defPort` | Puerto HTTP del servicio (Por defecto: 25577). |
+| `token` | Token del bot de Discord. |
+| `shopchannelID` | ID del Canal donde se enviarán las notificaciones de compras. |
+| `tebexCheck.prefix` | Prefijo para los comandos (Ej: `!`). |
+| `tebexCheck.apiKey` | **Tebex Private Key** para consultar datos. |
+| `tebexCheck.requiredRole`| ID del Rol de Discord requerido para usar los comandos (Déjalo vacío para acceso público). |
 
-El código también incluye una funcionalidad de depuración que se habilita si la variable `debug` se establece en `true`. En ese caso, se imprimirán mensajes adicionales en la consola, incluyendo mensajes de los usuarios del bot de Discord y otros detalles de funcionamiento.
+### Embed de Compras
+| Clave | Propósito |
+|---|---|
+| `embed.url` | URL al hacer clic en el título (Tu Tienda Tebex). |
+| `embed.gifurl` | Banner / GIF superior en la notificación. |
+| `embed.imageurl` | Imagen grande bajo el texto en la notificación. |
+| `embed.color` | Color lateral del Embed (Ej: `#0099ff`). |
+| `embed.useMCskin` | `true/false` Usa la cabeza de Minecraft del comprador como miniatura. |
+| `embed.emojititle` | Emoji para el título de la compra. |
 
-## Iniciar la Aplicación
+---
 
-Para iniciar la aplicación, se debe ejecutar el comando `node app.js` en la línea de comandos. El bot de Discord y el servidor web comenzarán a funcionar, siempre y cuando se hayan configurado correctamente las variables necesarias y las dependencias estén instaladas.
+## 🔗 Configuración en Tebex
 
-Es importante recordar que la aplicación necesita acceso al token del bot de Discord y a los canales de Discord especificados para funcionar correctamente. Además, asegúrate de que el archivo `config.json` esté correctamente configurado y que todos los módulos necesarios estén instalados antes de iniciar la aplicación.
+1. Ve al panel de control de tu tienda **Tebex**.
+2. Dirígete a **Integrations -> Webhooks** y añade un nuevo Webhook.
+3. Apunta la URL hacia tu servidor IP/Dominio con el puerto configurado (ej: `http://mi-servidor.com:25577/`).
+4. **IMPORTANTE**: El microservicio está protegido y solo acepta peticiones de las IPs oficiales de Tebex (`18.209.80.3` y `54.87.231.232`). Si usas un proxy inverso como Cloudflare, asegúrate de que esté configurado para pasar la IP real.
 
-## Notas Finales
+---
 
-Este código es un ejemplo básico de una aplicación que recibe información a través de una solicitud POST y la envía a un canal de Discord. Dependiendo de tus necesidades específicas, es posible que desees agregar más funcionalidades, seguridad y manejo de errores para adaptarlo a tu caso de uso particular.
+## 📊 Endpoints de Observabilidad
 
-Recuerda también que la implementación de actualizaciones automáticas y la publicación en Discord deben realizarse con precaución en un entorno de producción para evitar problemas y garantizar un funcionamiento estable de la aplicación.
+| Método | Endpoint | Descripción |
+|---|---|---|
+| `GET` | `/healthz` | Devuelve el estado, uptime y contadores básicos del proceso. |
+| `GET` | `/metrics` | Devuelve estadísticas detalladas (webhooks procesados, ignorados, deduplicados y errores). |
+| `POST`| `/` | Endpoint principal que recibe los Webhooks de Tebex. |
+
+---
+
+## 🛠️ Solución de Problemas Comunes
+
+- **`Not authorized` (403)**: La petición no viene de una IP oficial de Tebex. Verifica que no tengas un proxy/firewall alterando la IP de origen.
+- **Webhook sin productos**: Tebex envió un evento de validación o un payload incompleto. Es normal en el primer intento de vinculación.
+- **No llegan mensajes a Discord**: Verifica el `shopchannelID`, que el bot tenga el token correcto y posea permisos de "Ver Canal", "Enviar Mensajes" e "Insertar Enlaces" en ese canal.
+- **No funcionan los comandos `!tbxuser`**: Revisa que has colocado correctamente la `tebexCheck.apiKey` (Tebex Private Key).
+
+---
+
+## 🔄 Flujo de la Integración
+
+```mermaid
+flowchart TD
+    A[Tebex] -->|Webhook POST /| B[Validación de IP]
+    B --> C[Asignar ID de Petición]
+    C --> D[Validar tipo de Webhook]
+    D --> E[Extraer ID de Transacción]
+    E --> F{¿Evento Repetido?}
+    F -- Sí --> G[Ignorar y Responder 200]
+    F -- No --> H[Construir Embed Visual]
+    H --> I[Enviar al Canal de Discord]
+    I --> J[Guardar Transacción y Responder 200]
+```
